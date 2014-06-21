@@ -7,7 +7,7 @@
     <ProjectGuid>{9AEC023A-1FCC-4349-B700-FBA2B9747C56}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TriangleApi.Tests</RootNamespace>
+    <RootNamespace>TriangleApi</RootNamespace>
     <AssemblyName>TriangleApi.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -79,6 +79,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Domain\TriangleTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

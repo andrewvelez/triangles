@@ -7,7 +7,7 @@ namespace TriangleApi.Domain
     {
 
         [Fact]
-        public void Ctor_NegativeParameter_ThrowsArgumentOutOfRangeException()
+        public void Ctor_AnyNegativeParameter_ThrowsArgumentOutOfRangeException()
         {
             Assert.Throws<ArgumentOutOfRangeException>(
                 delegate
@@ -29,7 +29,7 @@ namespace TriangleApi.Domain
         }
 
         [Fact]
-        public void Ctor_ZeroParameter_ThrowsArgumentOutOfRangeException()
+        public void Ctor_AnyZeroParameter_ThrowsArgumentOutOfRangeException()
         {
             Assert.Throws<ArgumentOutOfRangeException>(
                 delegate
@@ -51,7 +51,7 @@ namespace TriangleApi.Domain
         }
 
         [Fact]
-        public void Ctor_InfinityParameter_ThrowsArgumentOutOfRangeException()
+        public void Ctor_AnyInfinityParameter_ThrowsArgumentOutOfRangeException()
         {
             Assert.Throws<ArgumentOutOfRangeException>(
                 delegate
@@ -70,6 +70,27 @@ namespace TriangleApi.Domain
                 {
                     var badTriangle = new Triangle(1, 2, Double.PositiveInfinity);
                 });
+        }
+
+        [Fact]
+        public void GetSideLengthType_EquilateralParameters_ReturnsEquilateral()
+        {
+            var testTriangle = new Triangle(10.2, 10.2, 10.2);
+            Assert.Equal(Triangle.SideLengthType.Equilateral, testTriangle.GetSideLengthType());
+        }
+
+        [Fact]
+        public void GetSideLengthType_IsoscelesParameters_ReturnsIsosceles()
+        {
+            var testTriangle = new Triangle(10.2, 10.2, 15);
+            Assert.Equal(Triangle.SideLengthType.Isosceles, testTriangle.GetSideLengthType());
+        }
+
+        [Fact]
+        public void GetSideLengthType_ScaleneParameters_ReturnsScalene()
+        {
+            var testTriangle = new Triangle(10.2, 15, 2);
+            Assert.Equal(Triangle.SideLengthType.Scalene, testTriangle.GetSideLengthType());
         }
 
     }

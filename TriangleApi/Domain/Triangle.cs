@@ -23,24 +23,21 @@ namespace TriangleApi.Domain
             Side3 = GetVerifiedSideLength(thisSide3);
         }
 
-        public bool IsEquilateral()
+        //TODO nice to have types by side length, might be problematic if you wanted types by other attributes, needs more design thought later
+        public SideLengthType GetSideLengthType()
         {
-            return false;
-        }
-
-        public bool IsIsosceles()
-        {
-            return false;
-        }
-
-        public bool IsScalene()
-        {
-            return false;
-        }
-
-        private SideLengthType GetSideLengthType()
-        {
-            return SideLengthType.Scalene;
+            if ((Side1 == Side2) && (Side2 == Side3))
+            {
+                return SideLengthType.Equilateral;
+            }
+            else if ((Side1 == Side2) || (Side2 == Side3) || (Side1 == Side3))
+            {
+                return SideLengthType.Isosceles;
+            }
+            else
+            {
+                return SideLengthType.Scalene;
+            }
         }
 
         private double GetVerifiedSideLength(double side)
